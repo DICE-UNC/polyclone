@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PolyClone</title>
+  <style>
+.well {
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+}
+fieldset {
+  border: 0;
+}
+.btn {
+  padding: 6px 12px;
+  text-align: center;
+  border: 1px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #428bca;
+}
+legend {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 32px;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+  </style>
+  <script type="text/javascript"> 
+  function populateDest(){	
+        var source = document.main.file;
+	var x = {{ jsonmap|safe }}
+	if(source.files.length >= 0){
+		var sourceFile = source.files[0].name;
+		var source_ext = sourceFile.split('.').pop();
+		var dest_list = x[source_ext];
+		ClearOptions(document.main.output_format);
+
+		if (typeof dest_list !== 'undefined' && dest_list.length > 0) {
+			for(var i = 0; i < dest_list.length; i++) {
+				AddToOptionList(document.main.output_format, dest_list[i], dest_list[i]);
+			}
+		}
+		else{
+			AddToOptionList(document.main.output_format, 0, "-- NO AVAILABLE CONVERSIONS --");
+		}
+	       
+	}
+         
+  }
+
+  function ClearOptions(OptionList) {
+  // Always clear an option list from the last entry to the first
+     for (x = OptionList.length; x >= 0; x = x - 1) {
+       OptionList[x] = null;
+     }
+  }
+
+
+  function AddToOptionList(OptionList, OptionValue, OptionText) {
+  // Add option to the bottom of the list
+     OptionList[OptionList.length] = new Option(OptionText, OptionValue);
+  }
+
+  </script>
+</head>
+<body>
+  <form class="form-horizontal" method="post" enctype="multipart/form-data" name="main">
+    <legend>Convert Files</legend>
+    <fieldset>
+    <div class="well">
+    <label class="control-label" for="file">Source File</label>
+    <input type="file" name="file" id="file" onchange="javascript:populateDest()"/>
+    </div>
+    <div class="well">
+    <label class="control-label" for="output_format">Output Format</label>
+    <select id="output_format" name="output_format">
+    {% for ext in all_ext %}
+      <option value="{{ ext }}">{{ ext }}</option>
+    {% endfor %}
+    </select>
+    </div>
+    </fieldset>
+    <div class="control-group">
+    <input class="btn" type="submit" value="Convert"/>
+    </div>
+  </form>
+</body>
+</html>

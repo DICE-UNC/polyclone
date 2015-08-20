@@ -1,0 +1,55 @@
+1) Install Apache and mod_wsgi.
+
+   > sudo apt-get install apache2
+
+   > sudo apt-get install libapache2-mod-wsgi
+
+   > sudo a2enmod wsgi 
+
+
+2) Set up Flast app
+
+   Unzip polyclone and copy the resulting polyclone direction to /var/www 
+
+3) Install Flash
+
+   > sudo apt-get install python-pip 
+
+   If virtualenv is not installed, use pip to install with the following ...
+   > sudo pip install virtualenv
+		
+   > sudo virtualenv venv
+
+   > source venv/bin/activate
+
+   > sudo pip install Flask 
+
+   Go to var/www/polyclone/polyclone folder and give following command to test if installation was successful
+
+   > sudo python __init__.py 
+
+   Will display “Running on http://localhost:5000/” or "Running on http://127.0.0.1:5000/" if installation was successful
+
+   Deactivate the environment with the following.
+
+   > deactivate
+
+4) Configure and Enable new Virtual Host
+
+   > move the polyclone.conf file to etc/apache2/sites-available
+
+   Edit polyclone.conf, fill out the info marked by '--'s
+
+
+
+
+   Now enable virtual host with. 
+
+   > sudo a2ensite polyclone
+
+   Finally restart apache
+
+   > sudo service apache2 restart 
+
+
+

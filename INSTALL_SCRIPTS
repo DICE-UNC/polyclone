@@ -1,0 +1,93 @@
+--------------------------
+--- BASIC INSTRUCTIONS ---
+--------------------------
+
+  Move desired script to var/www/polyglot/polyglot/scripts 
+ 
+  set read/run permissions for the script
+
+
+--------------------------------
+--- Avconv_convert.sh Config ---
+--------------------------------
+
+  > sudo apt-get install libav-tools
+
+
+--------------------------------
+--- brlcad_convert.sh Config ---
+--------------------------------
+
+  download and install brl-cad from "http://brlcad.org/"
+
+
+
+------------------------------
+--- FLAC_convert.sh Config ---
+------------------------------
+
+  > sudo apt-get install flac
+
+
+
+---------------------------------
+--- FreeCAD_convert.sh Config ---
+---------------------------------
+
+  > sudo mkdir /var/www/.FreeCAD
+
+  > sudo chown www-data:www-data /var/www/.FreeCAD
+
+  > sudo apt-get install libav-tools
+
+
+
+
+---------------------------------
+--- Htmldoc_convert.sh Config ---
+---------------------------------
+
+  > sudo apt-get install Htmldoc
+
+
+
+--------------------------------
+--- ImgMgk_convert.sh Config ---
+--------------------------------
+
+  > sudo apt-get install ImageMagick
+
+
+-------------------------------------
+--- LibreOffice_convert.sh Config ---
+-------------------------------------
+ 
+  > sudo apt-get install libreoffice
+
+  > sudo mkdir /var/www/.config
+
+  > sudo chown www-data:www-data /var/www/.config
+----------------------------------
+--- Pdf2djvu_convert.sh Config ---
+----------------------------------
+
+  > sudo apt-get install pdf2djvu
+
+
+-----------------------------------------
+--- VCLAudio converter scripts config ---
+-----------------------------------------
+
+  > sudo apt-get install vlc-nox
+
+
+
+
+
+
+
+
+
+
+
+
